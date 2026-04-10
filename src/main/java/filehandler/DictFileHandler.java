@@ -29,33 +29,24 @@ public class DictFileHandler {
         }
     }
 
-    public static void insertWord(String word) {
-        word = word.trim();
-
-        if (tree.search(word)) {
-            System.out.println("ERROR: Word already in dictionary!");
-            return;
-        }
-
-      
-        tree.insert(word);
-
-       
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath, true))) {
-            bw.write(word);
-            bw.newLine();
-        } catch (IOException e) {
-            System.out.println("ERROR: Could not update dictionary file.");
-        }
+    public static String insertWord(String word) {
+    word = word.trim();
+    if (tree.search(word))
+        return "ERROR: Word already in dictionary!";
+    tree.insert(word);
+    
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath, true))) {
+        bw.write(word);
+        bw.newLine();
+    } catch (IOException e) {
+        return "ERROR: Could not update dictionary file.";
     }
+    return "OK";
+}
 
-    // Lookup word
-    public static void lookupWord(String word) {
-        if (tree.search(word.trim())) {
-            System.out.println("YES");
-        } else {
-            System.out.println("NO");
-        }
+   
+    public static boolean lookupWord(String word) {
+        return tree.search(word.trim());
     }
 
 
