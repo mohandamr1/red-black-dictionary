@@ -33,6 +33,7 @@ public class RBDict {
             return 0;
         int Lheight=getHeight( root.getLeft() );
         int Rheight=getHeight( root.getRight() );
+        
         return 1+ Math.max(Lheight,Rheight);
     }
     
@@ -41,6 +42,16 @@ public class RBDict {
     }
     
     public int getBlackHeight ( RBNode<String> root){
+        if(root==null)
+            return 0;
+        int Lheight=getBlackHeight( root.getLeft() );
+        int Rheight=getBlackHeight( root.getRight() );
+
+        if(Lheight== Rheight && root.getColor()==Color.BLACK)
+            return 1+ Lheight ;
+
+
+        return Lheight;
 
 
     }
