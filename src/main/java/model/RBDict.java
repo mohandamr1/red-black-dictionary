@@ -28,7 +28,7 @@ public class RBDict {
     }
     
     public static int getBlackHeight(RBNode root){
-        if(root == null){
+        if(root == null || root.getLeft() == null){
             return 1;
         }
         
@@ -36,7 +36,7 @@ public class RBDict {
             return getBlackHeight(root.getLeft()) + 1;
         }
         else{
-            return getBlackHeight(root.getRight());
+            return getBlackHeight(root.getLeft());
         }
        
     }
