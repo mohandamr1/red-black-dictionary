@@ -29,14 +29,18 @@ public class RBDict {
     }
     
     public int getHeight(RBNode<String> root){
-       
+        if(root==null)
+            return 0;
+        int Lheight=getHeight( root.getLeft() );
+        int Rheight=getHeight( root.getRight() );
+        return 1+ Math.max(Lheight,Rheight);
     }
     
     public int getSize(){
         return this.size;
     }
     
-    public int getBlackHeight ( ){
+    public int getBlackHeight ( RBNode<String> root){
 
 
 
