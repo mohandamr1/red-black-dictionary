@@ -2,6 +2,8 @@ package filehandler;
 
 import java.io.*;
 import model.RBDict;
+import model.RBNode;
+import model.NodeColor;
 
 public class DictFileHandler {
     
@@ -20,7 +22,7 @@ public class DictFileHandler {
             while ((word = br.readLine()) != null) {
                 word = word.trim();
                 if (!word.isEmpty()) {
-                    tree.insert(word);
+                    insertWord(word);
                 }
             }
 
@@ -31,9 +33,14 @@ public class DictFileHandler {
 
     public static String insertWord(String word) {
     word = word.trim();
-    if (tree.search(word))
+    RBNode node = new RBNode();
+    node.setData(word);
+    node.setColor(NodeColor.RED);
+ 
+    
+    if (tree.search(tree.getRoot(), word))
         return "ERROR: Word already in dictionary!";
-    tree.insert(word);
+    tree.insert(tree.getRoot(), node);
     
     try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath, true))) {
         bw.write(word);
@@ -46,7 +53,7 @@ public class DictFileHandler {
 
    
     public static boolean lookupWord(String word) {
-        return tree.search(word.trim());
+        return tree.search(tree.getRoot(),word.trim());
     }
 
 
@@ -55,10 +62,10 @@ public class DictFileHandler {
     }
     
     public static int getHeight() {
-        return tree.getHeight(); 
+        return tree.getHeight(tree.getRoot()); 
     }
     
     public static int getBlackHeight() {
-        return RBDict.getBlackHeight(tree.getRoot()); 
+        return tree.getBlackHeight(tree.getRoot());
     }
 }

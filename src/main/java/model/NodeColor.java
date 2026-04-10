@@ -1,6 +1,6 @@
 package model;
 
-enum Color {
+public enum NodeColor {
     RED,
     BLACK
 }

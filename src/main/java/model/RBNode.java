@@ -6,15 +6,25 @@ public class RBNode<T> {
     private RBNode left;
     private RBNode right;
     private RBNode parent;
-    private Color color;
+    private NodeColor color;
     private T data;
 
+    public RBNode(){
+        left = null;
+        right = null;
+        parent = null;
+    }
+    
     public RBNode getLeft() {
         return left;
     }
 
     public T getData() {
         return data;
+    }
+    
+    public void setData(T data){
+        this.data = data;
     }
 
     public void setLeft(RBNode left) {
@@ -37,11 +47,11 @@ public class RBNode<T> {
         this.parent = parent;
     }
 
-    public Color getColor() {
+    public NodeColor getColor() {
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setColor(NodeColor color) {
         this.color = color;
     }
     
