@@ -33,27 +33,29 @@ public class RBDict {
             return 0;
         int Lheight=getHeight( root.getLeft() );
         int Rheight=getHeight( root.getRight() );
-        
+
         return 1+ Math.max(Lheight,Rheight);
     }
     
     public int getSize(){
         return this.size;
     }
-    
-    public int getBlackHeight ( RBNode<String> root){
-        if(root==null)
+
+
+    public int getBlackHeight(RBNode<String> root) {
+        if (root == null)
             return 0;
-        int Lheight=getBlackHeight( root.getLeft() );
-        int Rheight=getBlackHeight( root.getRight() );
 
-        if(Lheight== Rheight && root.getColor()==Color.BLACK)
-            return 1+ Lheight ;
+        int L = getBlackHeight(root.getLeft());
+        int R = getBlackHeight(root.getRight());
 
+        if (L != R) {
+            throw new RuntimeException("Red-Black Tree violated!");
+        }
 
-        return Lheight;
-
-
+        if (root.getColor() == Color.BLACK)
+            return L + 1;
+        else
+            return L;
     }
-    
 }
