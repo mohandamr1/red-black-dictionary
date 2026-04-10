@@ -12,39 +12,50 @@ public class RBDict {
         this.size = 0;
     }
     
-    public boolean search(String word){
-        return true;
+    public boolean search(RBNode<String> root,String key ){
+        if(root==null)
+            return false;
+        else if( root.getData().equalsIgnoreCase( key ) )
+            return true;
+        else if ( root.getData().compareToIgnoreCase(key)>0 )
+             return search(root.getLeft(),key);
+
+        else
+           return search(root.getRight(),key);
+
     }
     public void insert(String word){
         
     }
     
-    public int getHeight(){
-        return this.height;
+    public int getHeight(RBNode<String> root){
+        if(root==null)
+            return 0;
+        int Lheight=getHeight( root.getLeft() );
+        int Rheight=getHeight( root.getRight() );
+
+        return 1+ Math.max(Lheight,Rheight);
     }
     
     public int getSize(){
         return this.size;
     }
-    
-    
-    public RBNode<String> getRoot(){
-        return this.root;
+
+
+    public int getBlackHeight(RBNode<String> root) {
+        if (root == null)
+            return 0;
+
+        int L = getBlackHeight(root.getLeft());
+        int R = getBlackHeight(root.getRight());
+
+        if (L != R) {
+            throw new RuntimeException("Red-Black Tree violated!");
+        }
+
+        if (root.getColor() == Color.BLACK)
+            return L + 1;
+        else
+            return L;
     }
-    
-    
-    public static int getBlackHeight(RBNode root){
-        if(root == null || root.getLeft() == null){
-            return 1;
-        }
-        
-        if(root.getLeft().getColor() == Color.BLACK){
-            return getBlackHeight(root.getLeft()) + 1;
-        }
-        else{
-            return getBlackHeight(root.getLeft());
-        }
-       
-    }
-    
 }
