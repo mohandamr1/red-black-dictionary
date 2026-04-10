@@ -24,7 +24,7 @@ public class RBDict {
            return search(root.getRight(),key);
 
     }
-    public void insert(){
+    public void insert(String word){
         
     }
     

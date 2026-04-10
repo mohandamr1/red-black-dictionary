@@ -45,8 +45,4 @@ public class RBNode<T> {
         this.color = color;
     }
     
-    
-    
-    
-    
 }
