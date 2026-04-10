@@ -1,17 +1,17 @@
 package UI;
 
-import filehandler.DictFileHandler;
+import handler.DictHandler;
 
 public class Dictionary extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger =
             java.util.logging.Logger.getLogger(Dictionary.class.getName());
 
-    private DictFileHandler handler;
+    private DictHandler handler;
 
     public Dictionary() {
-        handler = new DictFileHandler("files/dictionary.txt");
-        DictFileHandler.loadDictionary();
+        handler = new DictHandler("files/dictionary.txt");
+        DictHandler.loadDictionary();
         initComponents();
     }
 
@@ -102,7 +102,7 @@ public class Dictionary extends javax.swing.JFrame {
             showResult("Type a word first.", java.awt.Color.GRAY);
             return;
         }
-        boolean found = DictFileHandler.lookupWord(word);  // see note below
+        boolean found = DictHandler.lookupWord(word);  // see note below
         if (found) {
             showResult("\"" + word + "\" found ✓", new java.awt.Color(0, 153, 76));
         } else {
@@ -117,7 +117,7 @@ public class Dictionary extends javax.swing.JFrame {
             showResult("Type a word first.", java.awt.Color.GRAY);
             return;
         }
-        String result = DictFileHandler.insertWord(word);  // see note below
+        String result = DictHandler.insertWord(word);  // see note below
         if (result.startsWith("ERROR")) {
             showResult(result, java.awt.Color.RED);
         } else {
@@ -133,11 +133,10 @@ public class Dictionary extends javax.swing.JFrame {
     }
 
     private void updateStats() {
-        jStatsLabel.setText(String.format(
-            "Size: %d  |  Height: %d  |  Black-Height: %d",
-            DictFileHandler.getSize(),
-            DictFileHandler.getHeight(),
-            DictFileHandler.getBlackHeight()
+        jStatsLabel.setText(String.format("Size: %d  |  Height: %d  |  Black-Height: %d",
+            DictHandler.getSize(),
+            DictHandler.getHeight(),
+            DictHandler.getBlackHeight()
         ));
     }
 

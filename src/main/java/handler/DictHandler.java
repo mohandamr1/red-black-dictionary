@@ -1,18 +1,18 @@
-package filehandler;
+package handler;
 
 import java.io.*;
 import model.RBDict;
 import model.RBNode;
 import model.NodeColor;
 
-public class DictFileHandler {
+public class DictHandler {
     
     private static RBDict tree;
     private static String filePath;
     
-    public DictFileHandler(String filePath){
+    public DictHandler(String filePath){
         tree = new RBDict();
-        DictFileHandler.filePath = filePath;
+        DictHandler.filePath = filePath;
     }
     public static void loadDictionary() {
         
