@@ -12,23 +12,34 @@ public class RBDict {
         this.size = 0;
     }
     
-    public boolean search(){
-        return true;
+    public boolean search(RBNode<String> root,String key ){
+        if(root.getData()==null)
+            return false;
+        else if( root.getData().equalsIgnoreCase( key ) )
+            return true;
+        else if ( root.getData().compareToIgnoreCase(key)>0) {
+            search(root.getLeft(),key);
+        }
+        else
+            search(root.getRight(),key);
+        return false;
     }
     public void insert(){
         
     }
     
-    public int getHeight(){
-        return this.height;
+    public int getHeight(RBNode<String> root){
+       
     }
     
     public int getSize(){
         return this.size;
     }
     
-    public int getBlackHeight(){
-        return 0;
+    public int getBlackHeight ( ){
+
+
+
     }
     
 }
