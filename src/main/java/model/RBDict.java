@@ -27,8 +27,18 @@ public class RBDict {
         return this.size;
     }
     
-    public int getBlackHeight(){
-        return 0;
+    public static int getBlackHeight(RBNode root){
+        if(root == null){
+            return 1;
+        }
+        
+        if(root.getLeft().getColor() == Color.BLACK){
+            return getBlackHeight(root.getLeft()) + 1;
+        }
+        else{
+            return getBlackHeight(root.getRight());
+        }
+       
     }
     
 }
