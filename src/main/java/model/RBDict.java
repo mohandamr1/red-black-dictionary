@@ -13,16 +13,16 @@ public class RBDict {
     }
     
     public boolean search(RBNode<String> root,String key ){
-        if(root.getData()==null)
+        if(root==null)
             return false;
         else if( root.getData().equalsIgnoreCase( key ) )
             return true;
-        else if ( root.getData().compareToIgnoreCase(key)>0) {
-            search(root.getLeft(),key);
-        }
+        else if ( root.getData().compareToIgnoreCase(key)>0 )
+             return search(root.getLeft(),key);
+
         else
-            search(root.getRight(),key);
-        return false;
+           return search(root.getRight(),key);
+
     }
     public void insert(){
         
@@ -41,7 +41,6 @@ public class RBDict {
     }
     
     public int getBlackHeight ( RBNode<String> root){
-
 
 
     }
