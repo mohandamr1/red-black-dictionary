@@ -12,10 +12,10 @@ public class RBDict {
         this.size = 0;
     }
     
-    public boolean search(){
+    public boolean search(String word){
         return true;
     }
-    public void insert(){
+    public void insert(String word){
         
     }
     
@@ -26,6 +26,12 @@ public class RBDict {
     public int getSize(){
         return this.size;
     }
+    
+    
+    public RBNode<String> getRoot(){
+        return this.root;
+    }
+    
     
     public static int getBlackHeight(RBNode root){
         if(root == null || root.getLeft() == null){
