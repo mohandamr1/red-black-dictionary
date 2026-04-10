@@ -1,12 +1,12 @@
 package model;
 
 
-public class RB<T> {
-    private RBNode<T> root;
+public class RBDict {
+    private RBNode<String> root;
     private int height;
     private int size;
 
-    public RB() {
+    public RBDict() {
         this.root = null;
         this.height = 0;
         this.size = 0;
