@@ -177,21 +177,12 @@ public class RBDict {
     }
 
     public int getBlackHeight(RBNode<String> root) {
-        if (root == null) {
+        if (root == null)
             return 0;
-        }
 
-        int L = getBlackHeight(root.getLeft());
-        int R = getBlackHeight(root.getRight());
-
-        if (L != R) {
-            throw new RuntimeException("Red-Black Tree violated!");
-        }
-
-        if (root.getColor() == NodeColor.BLACK) {
-            return L + 1;
-        } else {
-            return L;
-        }
+        if (root.getColor() == NodeColor.BLACK)
+            return 1 + getBlackHeight(root.getLeft());
+        else
+            return getBlackHeight(root.getLeft());
     }
 }
